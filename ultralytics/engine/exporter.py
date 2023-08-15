@@ -329,7 +329,7 @@ class Exporter:
             do_constant_folding=True,  # WARNING: DNN inference with torch>=1.12 may require do_constant_folding=False
             input_names=['images'],
             output_names=output_names,
-            dynamic_axes=dynamic or None)
+            dynamic_axes={'images': {0: 'batch'}})
 
         # Checks
         model_onnx = onnx.load(f)  # load onnx model
